@@ -2,11 +2,11 @@ import prisma from "../../prisma/client.js";
 
 class jogoModel {
   getAll = async () => {
-    return await prisma.task.findMany();
+    return await prisma.jogos.findMany();
   };
 
   create = async (titulo, preco, anoLancamento, empresaDesenvolvedora, generos, plataformasDisponiveis, image) => {
-    return await prisma.task.create({
+    return await prisma.jogos.create({
       data: {
         titulo,
         preco,
@@ -21,7 +21,7 @@ class jogoModel {
 
   update = async (id, titulo, preco, anoLancamento, empresaDesenvolvedora, generos, plataformasDisponiveis, image) => {
     try {
-      const jogo = await prisma.task.update({
+      const jogo = await prisma.jogos.update({
         where: { id },
         data: {
           titulo,
@@ -43,7 +43,7 @@ class jogoModel {
 
   delete = async (id) => {
     try {
-      const jogoDeletado = await prisma.task.delete({
+      const jogoDeletado = await prisma.jogos.delete({
         where: { id },
       });
 
@@ -54,4 +54,4 @@ class jogoModel {
     }
   };
 }
-export default new JogoModel();
+export default new jogoModel();

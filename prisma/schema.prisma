@@ -1,6 +1,7 @@
 // This is your Prisma schema file,
 // learn more about it in the docs: https://pris.ly/d/prisma-schema
 
+
 // Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
 // Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
 
@@ -13,12 +14,18 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model Task {
+  model jogos {
   id        Int     @id @default(autoincrement())
-  descricao String
-  concluida Boolean @default(false)
+  titulo String
+  preco String
+  anoLancamento String
+  empresaDesenvolvedora String
+  generos String
+  plataformasDisponiveis String
+  image String
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
 
-  criadaEm DateTime @default(now())
 
-  @@map("tasks")
+  @@map("jogos")
 }

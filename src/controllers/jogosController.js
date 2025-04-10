@@ -1,9 +1,9 @@
-import tarefaModel from "../models/jogoModel.js";
+import jogoModel from "../models/jogoModel.js";
 
 class JogoController {
   getAll = async (req, res) => {
     try {
-      const jogos = await jogosModel.getAll();
+      const jogos = await jogoModel.getAll();
       res.json(jogos);
         } catch (error) {
       console.error(error);
@@ -15,7 +15,7 @@ class JogoController {
     const { titulo, preco, anoLancamento, empresaDesenvolvedora, generos, plataformasDisponiveis, image } = req.body;
     // const jogo = req.body.jogo;
     try {
-      if (!titulo, preco) {
+      if (!titulo || !preco) {
         return res.status(400).json({ erro: "Titulo e preço são obrigatorios" });
       }
 
