@@ -1,5 +1,6 @@
 import jogoModel from "../models/jogoModel.js";
 
+//buscar todos os jogos
 class JogoController {
   getAll = async (req, res) => {
     try {
@@ -11,6 +12,7 @@ class JogoController {
     }
   };
 
+//buscar jogos por id
   async getJogosById(req, res) {
     try {
       const { id } = req.params;
@@ -28,6 +30,7 @@ class JogoController {
     }
   };
 
+// criar jogos
   create = async (req, res) => {
     const { titulo, preco, anoLancamento, empresaDesenvolvedora, generos, plataformasDisponiveis, image } = req.body;
     // const jogo = req.body.jogo;
@@ -44,6 +47,7 @@ class JogoController {
     }
   };
 
+//atualizar jogos
   update = async (req, res) => {
     const { id } = req.params;
     const { titulo, preco, anoLancamento, empresaDesenvolvedora, generos, plataformasDisponiveis, image } = req.body;
@@ -71,6 +75,7 @@ class JogoController {
     }
   };
 
+//deletar jogos
   delete = async (req, res) => {
     const { id } = req.params;
 
