@@ -11,6 +11,23 @@ class JogoController {
     }
   };
 
+  async getJogosById(req, res) {
+    try {
+      const { id } = req.params;
+
+      const jogo = await jogoModel.findById(id);
+
+      if (!jogo) {
+        return res.status(404).json({ error: "Jogo não encontrado" });
+      }
+
+      res.json(jogo);
+    } catch (error) {
+      console.error("Erro ao buscar jogo:", error);
+      res.status(500).json({ error: "Erro ao buscar jogo" });
+    }
+  };
+
   create = async (req, res) => {
     const { titulo, preco, anoLancamento, empresaDesenvolvedora, generos, plataformasDisponiveis, image } = req.body;
     // const jogo = req.body.jogo;

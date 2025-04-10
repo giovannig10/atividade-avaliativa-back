@@ -5,6 +5,16 @@ class jogoModel {
     return await prisma.jogos.findMany();
   };
 
+  async findById(id) {
+    const jogos = await prisma.jogos.findUnique({
+      where: {
+        id: Number(id),
+      }
+    });
+
+    return jogos;
+  };
+
   create = async (titulo, preco, anoLancamento, empresaDesenvolvedora, generos, plataformasDisponiveis, image) => {
     return await prisma.jogos.create({
       data: {
